@@ -1,4 +1,4 @@
-package sample;
+package payroll;
 
 /**
  * class extends the Fulltime class and includes specific data 

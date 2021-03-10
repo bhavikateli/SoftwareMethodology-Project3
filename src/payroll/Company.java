@@ -1,4 +1,4 @@
-package sample;
+package payroll;
 
 /**
  * class is an array-based container class that implements 

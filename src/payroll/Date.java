@@ -1,4 +1,4 @@
-package sample;
+package payroll;
 
 /**
  * Creates a Date object based on specified string or today's date.

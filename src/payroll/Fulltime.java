@@ -1,4 +1,4 @@
-package sample;
+package payroll;
 
 /**
  * Class extends the Employee class and includes specific 

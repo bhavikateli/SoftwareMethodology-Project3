@@ -1,4 +1,4 @@
-package sample;
+package payroll;
 
 /**
  * This class defines the abstract data type Profile, 

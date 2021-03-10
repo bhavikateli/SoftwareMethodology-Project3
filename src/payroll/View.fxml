@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="payroll.Controller">
+   <bottom>
+      <TextArea prefHeight="155.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <TabPane prefHeight="241.0" prefWidth="613.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Employee Management">
+            <content>
+              <AnchorPane minWidth="0.0" prefHeight="250.0" prefWidth="600.0">
+                     <children>
+                        <Text layoutX="102.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                        <Text layoutX="66.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department" />
+                        <Text layoutX="73.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Hired" />
+                        <TextField fx:id="nameTextField" layoutX="156.0" layoutY="9.0" prefHeight="27.0" prefWidth="191.0" />
+                        <RadioButton fx:id="csButton" layoutX="156.0" layoutY="43.0" mnemonicParsing="false" text="CS">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="departmentType" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton fx:id="itButton" layoutX="227.0" layoutY="43.0" mnemonicParsing="false" text="IT" toggleGroup="$departmentType" />
+                        <RadioButton fx:id="eceButton" layoutX="287.0" layoutY="43.0" mnemonicParsing="false" text="ECE" toggleGroup="$departmentType" />
+                        <DatePicker fx:id="dateHiredTextField" layoutX="156.0" layoutY="69.0" />
+                        <RadioButton fx:id="fullTimeButton" layoutX="156.0" layoutY="106.0" mnemonicParsing="false" text="Full Time">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="statusType" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton fx:id="partTimeButton" layoutX="247.0" layoutY="106.0" mnemonicParsing="false" text="Part Time" toggleGroup="$statusType" />
+                        <RadioButton fx:id="managementButton" layoutX="350.0" layoutY="106.0" mnemonicParsing="false" text="Management" toggleGroup="$statusType" />
+                        <Text layoutX="54.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Annual Salary" />
+                        <TextField fx:id="annualSalaryTextField" layoutX="153.0" layoutY="137.0" prefHeight="27.0" prefWidth="199.0" />
+                        <Text layoutX="54.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours Worked" />
+                        <TextField fx:id="hoursWorkedTextField" layoutX="153.0" layoutY="175.0" prefHeight="27.0" prefWidth="95.0" />
+                        <Text layoutX="259.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rate" />
+                        <TextField fx:id="rateTextField" layoutX="300.0" layoutY="175.0" prefHeight="27.0" prefWidth="95.0" />
+                        <RadioButton fx:id="managerButton" layoutX="100.0" layoutY="221.0" mnemonicParsing="false" text="Manager">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="managementType" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton fx:id="departmentHeadButton" layoutX="193.0" layoutY="221.0" mnemonicParsing="false" text="Department Head" toggleGroup="$managementType" />
+                        <RadioButton fx:id="directionButton" layoutX="350.0" layoutY="221.0" mnemonicParsing="false" text="Director" toggleGroup="$managementType" />
+                        <Button fx:id="clearButton" layoutX="37.0" layoutY="256.0" mnemonicParsing="false" onAction="#clearScreen" prefHeight="27.0" prefWidth="90.0" text="Clear" />
+                        <Button fx:id="addEmployeeButton" layoutX="145.0" layoutY="256.0" mnemonicParsing="false" onAction="#addEmployee" prefHeight="27.0" prefWidth="115.0" text="Add Employee" />
+                        <Button fx:id="removeEmployeeButton" layoutX="288.0" layoutY="256.0" mnemonicParsing="false" onAction="#removeEmployee" prefHeight="27.0" prefWidth="134.0" text="Remove Employee" />
+                        <Button fx:id="setHoursButton" layoutX="450.0" layoutY="256.0" mnemonicParsing="false" onAction="#setHours" prefHeight="27.0" prefWidth="93.0" text="Set Hours" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Employee Database">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <MenuButton fx:id="fileMenuButton" layoutX="59.0" layoutY="53.0" mnemonicParsing="false" text="File">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Import " />
+                            <MenuItem mnemonicParsing="false" text="Export" />
+                          </items>
+                        </MenuButton>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>

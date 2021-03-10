@@ -1,4 +1,4 @@
-package sample;
+package payroll;
 /**
  * User interface class that reads/writes from/to the console.
  * @author Bhavika Teli and Eduardo Alba

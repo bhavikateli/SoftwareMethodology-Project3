@@ -1,4 +1,4 @@
-package sample;
+package payroll;
 
 /**
  * A driver class to run Project 2.

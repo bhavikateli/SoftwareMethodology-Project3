@@ -1,4 +1,4 @@
-package sample;
+package payroll;
 
 /**
  * Class defines the common data and operations for all employee type; 
