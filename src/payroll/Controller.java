@@ -6,73 +6,35 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.event.ActionEvent;
 
 public class Controller {
 
     @FXML
-    private TextField nameTextField;
+    private TextArea outputArea;
 
     @FXML
-    private RadioButton csButton;
-
-    @FXML
-    private ToggleGroup departmentType;
-
-    @FXML
-    private RadioButton itButton;
-
-    @FXML
-    private RadioButton eceButton;
+    private TextField nameTextField, annualSalaryTextField, hoursWorkedTextField, rateTextField;
 
     @FXML
     private DatePicker dateHiredTextField;
 
     @FXML
-    private RadioButton fullTimeButton;
+    private ToggleGroup departmentType, employeeType, managementType;
 
     @FXML
-    private ToggleGroup statusType;
+    private RadioButton csButton, itButton, eceButton;
 
     @FXML
-    private RadioButton partTimeButton;
+    private RadioButton fullTimeButton, partTimeButton, managementButton;
 
     @FXML
-    private RadioButton managementButton;
+    private RadioButton managerButton, departmentHeadButton, directionButton;
 
     @FXML
-    private TextField annualSalaryTextField;
-
-    @FXML
-    private TextField hoursWorkedTextField;
-
-    @FXML
-    private TextField rateTextField;
-
-    @FXML
-    private RadioButton managerButton;
-
-    @FXML
-    private ToggleGroup managementType;
-
-    @FXML
-    private RadioButton departmentHeadButton;
-
-    @FXML
-    private RadioButton directionButton;
-
-    @FXML
-    private Button clearButton;
-
-    @FXML
-    private Button addEmployeeButton;
-
-    @FXML
-    private Button removeEmployeeButton;
-
-    @FXML
-    private Button setHoursButton;
+    private Button clearButton, addEmployeeButton, removeEmployeeButton, setHoursButton;
 
     @FXML
     private MenuButton fileMenuButton;
@@ -82,13 +44,84 @@ public class Controller {
 
     }
 
+    /**
+     * Method to disable options according to selected employee
+     */
     @FXML
-    void clearScreen(ActionEvent event) {
+    public void disableOptions() {
+        RadioButton status = (RadioButton) employeeType.getSelectedToggle();
+        String employeeType = status.getText();
+
+        if(employeeType.equals("Management")) {
+            managerButton.setDisable(false);
+            directionButton.setDisable(false);
+            departmentHeadButton.setDisable(false);
+            annualSalaryTextField.setDisable(false);
+            hoursWorkedTextField.setDisable(true);
+            rateTextField.setDisable(true);
+        } else if(employeeType.equals("Part Time")){
+            managerButton.setDisable(true);
+            directionButton.setDisable(true);
+            departmentHeadButton.setDisable(true);
+            annualSalaryTextField.setDisable(true);
+            hoursWorkedTextField.setDisable(false);
+            rateTextField.setDisable(false);
+        } else if(employeeType.equals("Full Time")){
+            managerButton.setDisable(true);
+            directionButton.setDisable(true);
+            departmentHeadButton.setDisable(true);
+            annualSalaryTextField.setDisable(false);
+            hoursWorkedTextField.setDisable(true);
+            rateTextField.setDisable(true);
+        }
+
+    }
+
+
+    /**
+     * Method when clear button is selected to clear all fields
+     */
+    @FXML
+    void clearScreen() {
+        nameTextField.clear();
+        //nameTextField.setDisable(false);
+
+        annualSalaryTextField.clear();
+        //annualSalaryTextField.setDisable(false);
+
+        hoursWorkedTextField.clear();
+        //hoursWorkedTextField.setDisable(false);
+
+        rateTextField.clear();
+
+        dateHiredTextField.getEditor().clear();
+
+        if(departmentType.getSelectedToggle() != null){
+            departmentType.getSelectedToggle().setSelected(false);
+        }
+
+        if(employeeType.getSelectedToggle() != null){
+            employeeType.getSelectedToggle().setSelected(false);
+        }
+
+        if(managementType.getSelectedToggle() != null){
+            managementType.getSelectedToggle().setSelected(false);
+        }
+
+        managerButton.setDisable(false);
+        directionButton.setDisable(false);
+        departmentHeadButton.setDisable(false);
+        annualSalaryTextField.setDisable(false);
+        hoursWorkedTextField.setDisable(false);
+        rateTextField.setDisable(false);
+
+        outputArea.clear();
 
     }
 
     @FXML
     void removeEmployee(ActionEvent event) {
+        outputArea.appendText("yooooo");
 
     }
 

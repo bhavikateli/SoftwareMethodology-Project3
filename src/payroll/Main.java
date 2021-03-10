@@ -14,7 +14,7 @@ public class Main extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("View.fxml"));
         primaryStage.setTitle("Payroll Processing");
-        Scene scene = new Scene(root,600,700);
+        Scene scene = new Scene(root,600,500);
         primaryStage.setScene(scene);
 //        scene.getStylesheets().add(getClass().getResource("payroll.css").toExternalForm());
         primaryStage.show();
