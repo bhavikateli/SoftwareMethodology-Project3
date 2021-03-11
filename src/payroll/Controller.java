@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.event.ActionEvent;
+import javafx.scene.control.MenuItem;
 
 import java.time.LocalDate;
 
@@ -85,6 +86,27 @@ public class Controller {
 
     @FXML
     private MenuButton fileMenuButton;
+
+    @FXML
+    private MenuItem importMenuItem;
+
+    @FXML
+    private MenuItem exportMenuItem;
+
+    @FXML
+    private MenuButton printMenuButton;
+
+    @FXML
+    private MenuItem allEmployeeMenuItem;
+
+    @FXML
+    private MenuItem dateHiredMenuItem;
+
+    @FXML
+    private MenuItem departmentMenuItem;
+
+    @FXML
+    private Button calculatePaymentButton;
 
     /**
      * Method when clear button is selected to clear all fields
@@ -191,21 +213,27 @@ public class Controller {
      */
     @FXML
     void partTimeEmployee(Profile profile) {
-        try{
+        try {
             String salaryString = rateTextField.getText();
             double tempSalary = Double.parseDouble(salaryString);
-            if (tempSalary >= 0) {
+
+            if(tempSalary >= 0 ){
                 Employee employee = new Parttime(profile, tempSalary);
-                if (!company.add(employee))
-                    outputArea.appendText("Employee is already in the list.");
-                else
-                    outputArea.appendText("Employee added.");
-            } else {
-                System.out.println("Pay rate cannot be negative");
+                if(!company.add(employee)){
+                    outputArea.appendText("Employee already in list");
+                }else{
+                    outputArea.appendText("Employee added");
+                }
+            } else{
+                outputArea.appendText("Pay rate cannot be negative");
             }
-        }catch(NullPointerException e){
-            outputArea.appendText("Please fill out all requirements");
+        } catch(NullPointerException e){
+            outputArea.appendText("Please fill out everything for Parttime");
+        } catch(NumberFormatException e){
+            outputArea.appendText("Hourly rate cannot be negative");
         }
+
+
     }
 
     /**
@@ -234,9 +262,8 @@ public class Controller {
             Profile tempProfile = getProfile();
 
             if(tempEmployeeType.equals("Management")){
-                partTimeEmployee(tempProfile);
             }else if(tempEmployeeType.equals("Part Time")){
-
+                partTimeEmployee(tempProfile);
             }else if(tempEmployeeType.equals("Full Time")){
 
             }
@@ -256,6 +283,11 @@ public class Controller {
 
     @FXML
     void setHours(ActionEvent event) {
+
+    }
+
+    @FXML
+    void calculatePayment(ActionEvent event) {
 
     }
 

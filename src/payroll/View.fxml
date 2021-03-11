@@ -68,10 +68,18 @@
                      <children>
                         <MenuButton fx:id="fileMenuButton" layoutX="59.0" layoutY="53.0" mnemonicParsing="false" text="File">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="Import " />
-                            <MenuItem mnemonicParsing="false" text="Export" />
+                            <MenuItem fx:id="importMenuItem" mnemonicParsing="false" text="Import " />
+                            <MenuItem fx:id="exportMenuItem" mnemonicParsing="false" text="Export" />
                           </items>
                         </MenuButton>
+                        <MenuButton fx:id="printMenuButton" layoutX="146.0" layoutY="53.0" mnemonicParsing="false" text="Print">
+                          <items>
+                            <MenuItem fx:id="allEmployeeMenuItem" mnemonicParsing="false" text="All Employee" />
+                            <MenuItem fx:id="dateHiredMenuItem" mnemonicParsing="false" text="By Date Hired" />
+                              <MenuItem fx:id="departmentMenuItem" mnemonicParsing="false" text="By Department" />
+                          </items>
+                        </MenuButton>
+                        <Button fx:id="calculatePaymentButton" layoutX="241.0" layoutY="53.0" mnemonicParsing="false" onAction="#calculatePayment" text="Calculate Payment" />
                      </children></AnchorPane>
             </content>
           </Tab>
