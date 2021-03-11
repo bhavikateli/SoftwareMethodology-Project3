@@ -10,7 +10,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.event.ActionEvent;
 
+import java.time.LocalDate;
+
 public class Controller {
+
+    private Company company = new Company();
 
     @FXML
     private TextArea outputArea;
@@ -39,58 +43,16 @@ public class Controller {
     @FXML
     private MenuButton fileMenuButton;
 
-    @FXML
-    void addEmployee(ActionEvent event) {
-
-    }
-
-    /**
-     * Method to disable options according to selected employee
-     */
-    @FXML
-    public void disableOptions() {
-        RadioButton status = (RadioButton) employeeType.getSelectedToggle();
-        String employeeType = status.getText();
-
-        if(employeeType.equals("Management")) {
-            managerButton.setDisable(false);
-            directionButton.setDisable(false);
-            departmentHeadButton.setDisable(false);
-            annualSalaryTextField.setDisable(false);
-            hoursWorkedTextField.setDisable(true);
-            rateTextField.setDisable(true);
-        } else if(employeeType.equals("Part Time")){
-            managerButton.setDisable(true);
-            directionButton.setDisable(true);
-            departmentHeadButton.setDisable(true);
-            annualSalaryTextField.setDisable(true);
-            hoursWorkedTextField.setDisable(false);
-            rateTextField.setDisable(false);
-        } else if(employeeType.equals("Full Time")){
-            managerButton.setDisable(true);
-            directionButton.setDisable(true);
-            departmentHeadButton.setDisable(true);
-            annualSalaryTextField.setDisable(false);
-            hoursWorkedTextField.setDisable(true);
-            rateTextField.setDisable(true);
-        }
-
-    }
-
-
     /**
      * Method when clear button is selected to clear all fields
      */
     @FXML
     void clearScreen() {
         nameTextField.clear();
-        //nameTextField.setDisable(false);
 
         annualSalaryTextField.clear();
-        //annualSalaryTextField.setDisable(false);
 
         hoursWorkedTextField.clear();
-        //hoursWorkedTextField.setDisable(false);
 
         rateTextField.clear();
 
@@ -109,19 +71,85 @@ public class Controller {
         }
 
         managerButton.setDisable(false);
-        directionButton.setDisable(false);
         departmentHeadButton.setDisable(false);
+        directionButton.setDisable(false);
         annualSalaryTextField.setDisable(false);
         hoursWorkedTextField.setDisable(false);
         rateTextField.setDisable(false);
 
         outputArea.clear();
+    }
+
+    /**
+     * Method to disable options according to selected employee type
+     */
+    @FXML
+    public void disableOptions() {
+        RadioButton status = (RadioButton) employeeType.getSelectedToggle();
+        String employeeType = status.getText();
+
+        if(employeeType.equals("Management")) {
+            managerButton.setDisable(false);
+            departmentHeadButton.setDisable(false);
+            directionButton.setDisable(false);
+            annualSalaryTextField.setDisable(false);
+            hoursWorkedTextField.setDisable(true);
+            rateTextField.setDisable(true);
+        } else if(employeeType.equals("Part Time")){
+            managerButton.setDisable(true);
+            departmentHeadButton.setDisable(true);
+            directionButton.setDisable(true);
+            annualSalaryTextField.setDisable(true);
+            hoursWorkedTextField.setDisable(false);
+            rateTextField.setDisable(false);
+        } else if(employeeType.equals("Full Time")){
+            managerButton.setDisable(true);
+            departmentHeadButton.setDisable(true);
+            directionButton.setDisable(true);
+            annualSalaryTextField.setDisable(false);
+            hoursWorkedTextField.setDisable(true);
+            rateTextField.setDisable(true);
+        }
+
+    }
+
+    /**
+     * Helper method to create profile when adding employee
+     * @return Profile of current employee
+     */
+    @FXML
+    Profile getProfile() {
+        try {
+            RadioButton departmentTypeSelectedToggle = (RadioButton) departmentType.getSelectedToggle();
+            String tempDepartment = departmentTypeSelectedToggle.getText();
+            String tempName = nameTextField.getText();
+
+            LocalDate tempLocalDate = dateHiredTextField.getValue();
+            Date tempDate = new Date("" + tempLocalDate.getMonthValue() + "/" + tempLocalDate.getDayOfMonth() + "/" + tempLocalDate.getYear());
+
+            if (tempDate.isValid() == false) {
+                outputArea.appendText("Please input a valid date");
+                return null;
+            }
+
+            Profile tempProfile = new Profile(tempName,tempDepartment, tempDate);
+            return  tempProfile;
+
+        } catch(NullPointerException e ){
+            outputArea.appendText("Please fill out all the required fields");
+            return null;
+        }
+
+    }
+
+    @FXML
+    void addEmployee(ActionEvent event) {
 
     }
 
     @FXML
     void removeEmployee(ActionEvent event) {
-        outputArea.appendText("yooooo");
+        //outputArea.appendText("yooooo");
 
     }
 

@@ -28,14 +28,14 @@
                         <Text layoutX="102.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
                         <Text layoutX="66.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department" />
                         <Text layoutX="73.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Hired" />
-                        <TextField fx:id="nameTextField" layoutX="156.0" layoutY="9.0" prefHeight="27.0" prefWidth="191.0" />
-                        <RadioButton fx:id="csButton" layoutX="156.0" layoutY="43.0" mnemonicParsing="false" text="CS">
+                        <TextField fx:id="nameTextField" layoutX="156.0" layoutY="9.0" onAction="#getProfile" prefHeight="27.0" prefWidth="191.0" />
+                        <RadioButton fx:id="csButton" layoutX="156.0" layoutY="43.0" mnemonicParsing="false" onAction="#getProfile" text="CS">
                            <toggleGroup>
                               <ToggleGroup fx:id="departmentType" />
                            </toggleGroup></RadioButton>
-                        <RadioButton fx:id="itButton" layoutX="227.0" layoutY="43.0" mnemonicParsing="false" text="IT" toggleGroup="$departmentType" />
-                        <RadioButton fx:id="eceButton" layoutX="287.0" layoutY="43.0" mnemonicParsing="false" text="ECE" toggleGroup="$departmentType" />
-                        <DatePicker fx:id="dateHiredTextField" layoutX="156.0" layoutY="69.0" />
+                        <RadioButton fx:id="itButton" layoutX="227.0" layoutY="43.0" mnemonicParsing="false" onAction="#getProfile" text="IT" toggleGroup="$departmentType" />
+                        <RadioButton fx:id="eceButton" layoutX="287.0" layoutY="43.0" mnemonicParsing="false" onAction="#getProfile" text="ECE" toggleGroup="$departmentType" />
+                        <DatePicker fx:id="dateHiredTextField" layoutX="156.0" layoutY="69.0" onAction="#getProfile" />
                         <RadioButton fx:id="fullTimeButton" layoutX="156.0" layoutY="106.0" mnemonicParsing="false" onAction="#disableOptions" text="Full Time">
                            <toggleGroup>
                               <ToggleGroup fx:id="employeeType" />
