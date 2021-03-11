@@ -25,6 +25,16 @@ public class Fulltime extends Employee{
 	}
 
 	/**
+	 * Initial constructor with profile param
+	 * @param profile to add
+	 * @param salary hourly rate
+	 */
+	public Fulltime(Profile profile, double salary){
+		super(profile);
+		this.salary = salary;
+	}
+
+	/**
 	 * Method to calculate salary per period of fulltime employee
 	 */
 	@Override

@@ -24,6 +24,16 @@ public class Parttime extends Employee{
         super(name,department,dateHired);
 		this.hourlyWage = hourlyWage;
     }
+
+	/**
+	 * Initial constructor with profile param
+	 * @param profile to add
+	 * @param hourlyWage hourly rate
+	 */
+	public Parttime(Profile profile, double hourlyWage){
+    	super(profile);
+    	this.hourlyWage = hourlyWage;
+	}
     
 	/**
 	 * Method to calculate total payment in bi-weekly period

@@ -19,6 +19,26 @@ public class Management extends Fulltime{
 	public int managementCode;
 
 	/**
+	 * Initial constructor with profile param
+	 * @param profile to add
+	 * @param salary hourly rate
+	 * @param managementCode hourly rate
+	 */
+	public Management(Profile profile, double salary, int managementCode){
+		super(profile, salary);
+		if (managementCode == MANAGER_CODE) {
+			this.managementRole = "Manager";
+			compensation = MANAGER_COMPENSATION;
+		} else if (managementCode == DEPARTMENT_HEAD_CODE) {
+			this.managementRole = "DepartmentHead";
+			compensation = DEPARTMENT_HEAD_COMPENSATION;
+		} else if (managementCode == DIRECTOR_CODE) {
+			this.managementRole = "Director";
+			compensation = DIRECTOR_COMPENSATION;
+		}
+	}
+
+	/**
 	 * Initial constructor which sorts who compensation amount based on managementCode
 	 * @param name employee’s name in the form “lastname,firstname”
 	 * @param department department code: CS, ECE, IT

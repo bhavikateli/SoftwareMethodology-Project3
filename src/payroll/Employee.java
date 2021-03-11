@@ -23,7 +23,16 @@ public class Employee {
 	 * @param dateHired date employee was hired
 	 */
 	public Employee(String name, String department, Date dateHired) {
-        profile = new Profile(name,department,dateHired);
+
+		profile = new Profile(name,department,dateHired);
+	}
+
+	/**
+	 * Constructor to create employee object
+	 * @param profile
+	 */
+	public Employee(Profile profile){
+		this.profile = profile;
 	}
 
 	/**

@@ -16,29 +16,72 @@ public class Controller {
 
     private Company company = new Company();
 
+
     @FXML
     private TextArea outputArea;
 
     @FXML
-    private TextField nameTextField, annualSalaryTextField, hoursWorkedTextField, rateTextField;
+    private TextField nameTextField;
+
+    @FXML
+    private RadioButton csButton;
+
+    @FXML
+    private ToggleGroup departmentType;
+
+    @FXML
+    private RadioButton itButton;
+
+    @FXML
+    private RadioButton eceButton;
 
     @FXML
     private DatePicker dateHiredTextField;
 
     @FXML
-    private ToggleGroup departmentType, employeeType, managementType;
+    private RadioButton fullTimeButton;
 
     @FXML
-    private RadioButton csButton, itButton, eceButton;
+    private ToggleGroup employeeType;
 
     @FXML
-    private RadioButton fullTimeButton, partTimeButton, managementButton;
+    private RadioButton partTimeButton;
 
     @FXML
-    private RadioButton managerButton, departmentHeadButton, directionButton;
+    private RadioButton managementButton;
 
     @FXML
-    private Button clearButton, addEmployeeButton, removeEmployeeButton, setHoursButton;
+    private TextField annualSalaryTextField;
+
+    @FXML
+    private TextField hoursWorkedTextField;
+
+    @FXML
+    private TextField rateTextField;
+
+    @FXML
+    private RadioButton managerButton;
+
+    @FXML
+    private ToggleGroup managementType;
+
+    @FXML
+    private RadioButton departmentHeadButton;
+
+    @FXML
+    private RadioButton directionButton;
+
+    @FXML
+    private Button clearButton;
+
+    @FXML
+    private Button addEmployeeButton;
+
+    @FXML
+    private Button removeEmployeeButton;
+
+    @FXML
+    private Button setHoursButton;
 
     @FXML
     private MenuButton fileMenuButton;
@@ -142,8 +185,66 @@ public class Controller {
 
     }
 
+    /**
+     * Helper method to create part-time employee when adding employee
+     * @return Profile of current employee
+     */
+    @FXML
+    void partTimeEmployee(Profile profile) {
+        try{
+            String salaryString = rateTextField.getText();
+            double tempSalary = Double.parseDouble(salaryString);
+            if (tempSalary >= 0) {
+                Employee employee = new Parttime(profile, tempSalary);
+                if (!company.add(employee))
+                    outputArea.appendText("Employee is already in the list.");
+                else
+                    outputArea.appendText("Employee added.");
+            } else {
+                System.out.println("Pay rate cannot be negative");
+            }
+        }catch(NullPointerException e){
+            outputArea.appendText("Please fill out all requirements");
+        }
+    }
+
+    /**
+     * Helper method to create full-time employee when adding employee
+     * @return Profile of current employee
+     */
+    @FXML
+    void fullTimeEmployee() {}
+
+    /**
+     * Helper method to create management employee when adding employee
+     * @return Profile of current employee
+     */
+    @FXML
+    void managementEmployee() {}
+
+    /**
+     * Method to give functionality to the add employee button
+     * @param event
+     */
     @FXML
     void addEmployee(ActionEvent event) {
+        try {
+            RadioButton employeeTypeSelectedToggle = (RadioButton) employeeType.getSelectedToggle();
+            String tempEmployeeType = employeeTypeSelectedToggle.getText();
+            Profile tempProfile = getProfile();
+
+            if(tempEmployeeType.equals("Management")){
+                partTimeEmployee(tempProfile);
+            }else if(tempEmployeeType.equals("Part Time")){
+
+            }else if(tempEmployeeType.equals("Full Time")){
+
+            }
+
+
+        } catch(NullPointerException e ){
+            outputArea.appendText("Please fill out all the required fields");
+        }
 
     }
 
