@@ -381,25 +381,34 @@ public class Controller {
             String hoursWorkedString = hoursWorkedTextField.getText();
             int hoursWorked = Integer.parseInt(hoursWorkedString);
 
+            if(tempProfile == null){
+                return;
+            }
+
+            if(company.getNumEmployee() == 0){
+                outputArea.appendText("Employee Database is empty");
+            }
+
             if (hoursWorked <=  100) {
                 if(hoursWorked < 0){
-                    outputArea.appendText("Working hours cannot be negative");
+                    outputArea.appendText("Working hours cannot be negative" + "\n");
                 }else{
                     Employee employee = new Parttime(tempProfile, 0);
                     if (employee instanceof Parttime) {
                         Parttime emp = (Parttime) employee;
                         emp.setHoursWorked(hoursWorked);
                         if (company.setHours(emp))
-                            outputArea.appendText("Working hours set.");
+                            outputArea.appendText("Working hours set." + "\n");
                         else
-                            outputArea.appendText("Employee database is empty");
-                    } else{
-                        outputArea.appendText("Employee is not a parttime employee.");
+                            outputArea.appendText("Employee is not a parttime employee." + "\n");
                     }
                 }
             }
         }catch(NumberFormatException e){
-            outputArea.appendText("Please enter a valid numbers of hours");
+            outputArea.appendText("Please enter a valid numbers of hours" + "\n");
+        }catch (NullPointerException e){
+            outputArea.appendText("Please fill out all the fields" + "\n");
+
         }
 
     }
