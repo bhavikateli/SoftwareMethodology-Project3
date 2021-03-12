@@ -68,15 +68,15 @@
                      <children>
                         <MenuButton fx:id="fileMenuButton" layoutX="59.0" layoutY="53.0" mnemonicParsing="false" text="File">
                           <items>
-                            <MenuItem fx:id="importMenuItem" mnemonicParsing="false" text="Import " />
-                            <MenuItem fx:id="exportMenuItem" mnemonicParsing="false" text="Export" />
+                            <MenuItem fx:id="importMenuItem" mnemonicParsing="false" onAction="#importFile" text="Import " />
+                            <MenuItem fx:id="exportMenuItem" mnemonicParsing="false" onAction="#exportFile" text="Export" />
                           </items>
                         </MenuButton>
                         <MenuButton fx:id="printMenuButton" layoutX="146.0" layoutY="53.0" mnemonicParsing="false" text="Print">
                           <items>
-                            <MenuItem fx:id="allEmployeeMenuItem" mnemonicParsing="false" text="All Employee" />
-                            <MenuItem fx:id="dateHiredMenuItem" mnemonicParsing="false" text="By Date Hired" />
-                              <MenuItem fx:id="departmentMenuItem" mnemonicParsing="false" text="By Department" />
+                            <MenuItem fx:id="allEmployeeMenuItem" mnemonicParsing="false" onAction="#printAll" text="All Employee" />
+                            <MenuItem fx:id="dateHiredMenuItem" mnemonicParsing="false" onAction="#printDateHired" text="By Date Hired" />
+                              <MenuItem fx:id="departmentMenuItem" mnemonicParsing="false" onAction="#printDepartment" text="By Department" />
                           </items>
                         </MenuButton>
                         <Button fx:id="calculatePaymentButton" layoutX="241.0" layoutY="53.0" mnemonicParsing="false" onAction="#calculatePayment" text="Calculate Payment" />

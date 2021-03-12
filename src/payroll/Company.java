@@ -117,68 +117,61 @@ public class Company {
 	 * Helper method to process payments for all employees
 	 */
 	public void processPayments() {
-		if (numEmployee == 0) {
-			System.out.println("Employee database is empty");
-		} else {
+
 			for (int i = 0; i < numEmployee; i++) {
 				Employee currEmployee = emplist[i];
 				currEmployee.calculatePayment();
 			}
-			System.out.println("Calculation of employee payments is done.");
 		}
-	}
+
 
 	/**
 	 * Helper method to print earning statements for all employees
 	 */
-	public void print() {
-		if (numEmployee == 0) {
-			System.out.println("Employee database is empty");
-		} else {
-			System.out.println("--Printing earning statements for all employees--");
+	public String print() {
+		String result = "";
 			for (int i = 0; i < numEmployee; i++) {
 				Employee currEmployee = emplist[i];
-				System.out.println(currEmployee.toString());
+				result = result + (currEmployee.toString() + "\n");
 			}
-		}
+			return result;
 	}
 
 	/**
 	 * Helper method to print earning statements by department
 	 */
-	public void printByDepartment() {
-		if (numEmployee == 0) {
-			System.out.println("Employee database is empty");
-		} else {
-			System.out.println("--Printing earning statements by department--");
-			for (String department : DEPARTMENTS) {
-				for (int i = 0; i < numEmployee; i++) {
-					Employee currEmployee = emplist[i];
-					Profile profile = currEmployee.getProfile();
+	public String printByDepartment() {
 
-					if (profile.getDepartment().equals(department)) {
-						System.out.println(currEmployee.toString());
-					}
+		String result = "";
+
+		for (String department : DEPARTMENTS) {
+			for (int i = 0; i < numEmployee; i++) {
+				Employee currEmployee = emplist[i];
+				Profile profile = currEmployee.getProfile();
+
+				if (profile.getDepartment().equals(department)) {
+					result = result + currEmployee.toString() + "\n";
 				}
 			}
 		}
+
+		return result;
 	}
 
 	/**
 	 * Helper method to print earning statements by date hired
 	 */
-	public void printByDate() {
-		if (numEmployee == 0) {
-			System.out.println("Employee database is empty");
-		} else {
-			System.out.println("--Printing earning statements by date hired--");
+	public String printByDate() {
+
+		String result = "";
 			Employee[] temp = sortByDate(emplist);
 			for (int i = 0; i < numEmployee; i++) {
 				Employee curreEmployee = temp[i];
-				System.out.println(curreEmployee.toString());
+				result = result + curreEmployee.toString() + "\n";
 			}
+			return result;
 		}
-	}
+
 
 	/**
 	 * Helper method to sort by date
@@ -208,5 +201,9 @@ public class Company {
 			}
 		}
 		return temp;
+	}
+
+	public int getNumEmployee(){
+		return numEmployee;
 	}
 }
