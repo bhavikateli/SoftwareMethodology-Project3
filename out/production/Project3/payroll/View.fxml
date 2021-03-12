@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="payroll.Controller">
+        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="payroll.Controller">
    <bottom>
-      <TextArea fx:id="outputArea" prefHeight="155.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+      <TextArea fx:id="outputArea" editable="false" prefHeight="155.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
    </bottom>
    <center>
       <TabPane prefHeight="241.0" prefWidth="613.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">

@@ -5,6 +5,7 @@ package payroll;
  */
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
@@ -12,9 +13,14 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
-import javafx.event.ActionEvent;
 import javafx.scene.control.MenuItem;
-
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class Controller {
@@ -68,8 +74,6 @@ public class Controller {
 
     @FXML
     private MenuItem exportMenuItem;
-
-
 
     /**
      * Method when clear button is selected to clear all fields
@@ -431,6 +435,28 @@ public class Controller {
      */
     @FXML
     private void exportFile() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Text File (*.txt)", "*.txt"));
+
+        File newFile = fileChooser.showSaveDialog(null);
+        Employee[] list = company.exportDatabase();
+
+        try{
+            FileWriter writer = new FileWriter(newFile);
+            int i = 0;
+            if(list[0] != null){
+                while(list[i] != null){
+                    writer.write(list[i].toString() + "\n");
+                    i++;
+                }
+                outputArea.appendText("Employee Database Exported to '" + newFile.getName() + "'\n");
+            } else{
+                outputArea.appendText("There are no employees in the database." + "\n");
+            }
+            writer.close();
+        } catch (IOException e){
+            outputArea.appendText("Error." + "\n");
+        }
 
     }
 
@@ -439,8 +465,57 @@ public class Controller {
      */
     @FXML
     private void importFile() {
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showOpenDialog(fileMenuButton.getScene().getWindow());
+        try{
+            Scanner reader = new Scanner(file);
+            while(reader.hasNextLine()){
+                String line = reader.nextLine();
+                String[] tokens = line.split(",");
+                int numTokens = tokens.length;
 
+                String type = "";
+                String name = "";
+                String department = "";
+                Date date = new Date("01/01/2001"); //placeholder date
+                double salaryOrWage = 0;
+                int code= 0;
+
+                Employee emp = new Employee(name, department, date);
+
+                try{
+                    type = tokens[0];
+                    name = tokens[1];
+                    department = tokens[2];
+                    date = new Date(tokens[3]);
+                    salaryOrWage = Double.parseDouble(tokens[4]);
+
+                    if(numTokens == 6){
+                        code = Integer.parseInt(tokens[5]);
+                    }
+
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    outputArea.appendText("Error" + "\n");
+                }
+                Profile profile = new Profile(name, department, date);
+                if(profile == null){
+                    return;
+                }
+
+                if(type.equals("M")){
+                    emp = new Management(profile, salaryOrWage, code);
+                }else if(type.equals("P")){
+                    emp = new Parttime(profile, salaryOrWage);
+                }else if(type.equals("F")){
+                    emp = new Fulltime(profile, salaryOrWage);
+                }
+                company.add(emp);
+            }
+            outputArea.appendText("All employees imported into database from file '" + file.getName() + "'\n");
+
+        } catch (FileNotFoundException e){
+            outputArea.appendText("File not found." + "\n");
+        }
     }
-
 }
 

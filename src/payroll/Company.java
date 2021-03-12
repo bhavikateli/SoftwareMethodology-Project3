@@ -66,7 +66,7 @@ public class Company {
 	}
 
 	/**
-	 * Helpger method to remove an existing employee
+	 * Helper method to remove an existing employee
 	 * @param employee to remove
 	 * @return true if removed, false otherwise
 	 */
@@ -201,6 +201,10 @@ public class Company {
 			}
 		}
 		return temp;
+	}
+
+	public Employee[] exportDatabase(){
+		return emplist;
 	}
 
 	/**
