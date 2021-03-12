@@ -1,14 +1,16 @@
 package payroll;
-/**
- * Main class to set up GUI and run project 3
- * @author Bhavika Teli and Eduardo Alba
- */
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+/**
+ *Main method to set up GUI and project 3
+ *
+ * @author Bhavika Teli and Eduardo Alba
+ */
 
 public class Main extends Application {
 

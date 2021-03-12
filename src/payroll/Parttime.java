@@ -85,7 +85,7 @@ public class Parttime extends Employee{
 
 	/**
 	 * Method to set hoursWorked for parttime employee
-	 * @param hoursWorked
+	 * @param hoursWorked hours worked by employee
 	 */
 	public void setHoursWorked(int hoursWorked){
 		if(hoursWorked < 0)

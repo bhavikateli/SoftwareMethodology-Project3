@@ -1,11 +1,6 @@
 package payroll;
-/**
- * Controller class to give functionality to the UI in GUI
- * @author Bhavika Teli and Eduardo Alba
- */
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
@@ -13,7 +8,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import java.util.Scanner;
@@ -22,6 +16,12 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+
+/**
+ * Controller class to give functionality to the UI in GUI
+ *
+ * @author Bhavika Teli and Eduardo Alba
+ */
 
 public class Controller {
 
@@ -69,11 +69,6 @@ public class Controller {
     @FXML
     private MenuButton fileMenuButton;
 
-    @FXML
-    private MenuItem importMenuItem;
-
-    @FXML
-    private MenuItem exportMenuItem;
 
     /**
      * Method when clear button is selected to clear all fields
@@ -145,6 +140,8 @@ public class Controller {
             rateTextField.setDisable(true);
             setHoursButton.setDisable(true);
         }
+
+        outputArea.setEditable(false);
 
     }
 

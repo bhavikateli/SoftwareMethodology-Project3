@@ -15,7 +15,7 @@ public class Profile {
 	 * Constructor that sets instance variables to Profile class
 	 * @param name employee’s name in the form “lastname,firstname”
 	 * @param department department code: CS, ECE, IT
-	 * @param dateHired
+	 * @param dateHired date employee was hired
 	 */
 	public Profile(String name, String department, Date dateHired){
 		this.name = name;

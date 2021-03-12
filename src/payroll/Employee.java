@@ -29,7 +29,7 @@ public class Employee {
 
 	/**
 	 * Constructor to create employee object
-	 * @param profile
+	 * @param profile to add
 	 */
 	public Employee(Profile profile){
 		this.profile = profile;

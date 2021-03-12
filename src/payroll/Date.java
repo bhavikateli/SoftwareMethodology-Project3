@@ -1,13 +1,14 @@
 package payroll;
 
+import java.util.Calendar;
+import java.util.StringTokenizer;
+
 /**
  * Creates a Date object based on specified string or today's date.
  * Checks specified Date to determine whether or not it is valid.
- * @author Bhavika Teli, Eduardo Alba
+ *
+ *  @author Bhavika Teli and Eduardo Alba
  */
-
-import java.util.Calendar;
-import java.util.StringTokenizer;
 
 public class Date implements Comparable<Date>{
 	private int year;

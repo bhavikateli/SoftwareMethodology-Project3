@@ -86,7 +86,7 @@ public class Company {
 
 	/**
 	 * Helper method to set working hours for a part time
-	 * @param employee
+	 * @param employee to set hours for
 	 * @return true to set, false otherwise
 	 */
 	public boolean setHours(Employee employee) {
@@ -127,6 +127,7 @@ public class Company {
 
 	/**
 	 * Helper method to print earning statements for all employees
+	 * @return String with d
 	 */
 	public String print() {
 		String result = "";
@@ -139,6 +140,7 @@ public class Company {
 
 	/**
 	 * Helper method to print earning statements by department
+	 * @return String with database sorted by department
 	 */
 	public String printByDepartment() {
 
@@ -160,6 +162,7 @@ public class Company {
 
 	/**
 	 * Helper method to print earning statements by date hired
+	 * @return String with entire database
 	 */
 	public String printByDate() {
 
