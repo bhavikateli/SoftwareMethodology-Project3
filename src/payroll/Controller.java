@@ -492,7 +492,7 @@ public class Controller {
                     }
 
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    outputArea.appendText("Error" + "\n");
+                    outputArea.appendText("Import Error" + "\n");
                 }
                 Profile profile = new Profile(name, department, date);
                 if(profile == null){
