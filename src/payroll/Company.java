@@ -203,6 +203,10 @@ public class Company {
 		return temp;
 	}
 
+	/**
+	 * Helper method for controller class to get numEmployee value
+	 * @return numEmployee value
+	 */
 	public int getNumEmployee(){
 		return numEmployee;
 	}

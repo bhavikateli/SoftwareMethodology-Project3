@@ -1,4 +1,8 @@
 package payroll;
+/**
+ * Controller class to give functionality to the UI in GUI
+ * @author Bhavika Teli and Eduardo Alba
+ */
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,7 +21,6 @@ public class Controller {
 
     private Company company = new Company();
 
-
     @FXML
     private TextArea outputArea;
 
@@ -25,31 +28,13 @@ public class Controller {
     private TextField nameTextField;
 
     @FXML
-    private RadioButton csButton;
-
-    @FXML
     private ToggleGroup departmentType;
-
-    @FXML
-    private RadioButton itButton;
-
-    @FXML
-    private RadioButton eceButton;
 
     @FXML
     private DatePicker dateHiredTextField;
 
     @FXML
-    private RadioButton fullTimeButton;
-
-    @FXML
     private ToggleGroup employeeType;
-
-    @FXML
-    private RadioButton partTimeButton;
-
-    @FXML
-    private RadioButton managementButton;
 
     @FXML
     private TextField annualSalaryTextField;
@@ -73,15 +58,6 @@ public class Controller {
     private RadioButton directionButton;
 
     @FXML
-    private Button clearButton;
-
-    @FXML
-    private Button addEmployeeButton;
-
-    @FXML
-    private Button removeEmployeeButton;
-
-    @FXML
     private Button setHoursButton;
 
     @FXML
@@ -93,20 +69,7 @@ public class Controller {
     @FXML
     private MenuItem exportMenuItem;
 
-    @FXML
-    private MenuButton printMenuButton;
 
-    @FXML
-    private MenuItem allEmployeeMenuItem;
-
-    @FXML
-    private MenuItem dateHiredMenuItem;
-
-    @FXML
-    private MenuItem departmentMenuItem;
-
-    @FXML
-    private Button calculatePaymentButton;
 
     /**
      * Method when clear button is selected to clear all fields
@@ -212,7 +175,7 @@ public class Controller {
 
     /**
      * Helper method to create part-time employee when adding employee
-     * @return Profile of current employee
+     * @param profile of current employee
      */
     @FXML
     private void partTimeEmployee(Profile profile) {
@@ -240,7 +203,7 @@ public class Controller {
 
     /**
      * Helper method to create full-time employee when adding employee
-     * @return Profile of current employee
+     * @param profile for new employee
      */
     @FXML
     private void fullTimeEmployee(Profile profile) {
@@ -267,7 +230,7 @@ public class Controller {
 
     /**
      * Helper method to create management employee when adding employee
-     * @return Profile of current employee
+     * @param profile of new employee
      */
     @FXML
     private void managementEmployee(Profile profile) {
@@ -445,7 +408,7 @@ public class Controller {
      * Functionality to calculate payment button
      */
     @FXML
-    void calculatePayment() {
+    private void calculatePayment() {
         if(company.getNumEmployee() == 0){
             outputArea.appendText("There are no employees in the database" + "\n");
         } else{
@@ -454,13 +417,19 @@ public class Controller {
         }
     }
 
+    /**
+     * Functionality to export file menu item
+     */
     @FXML
-    void exportFile(ActionEvent event) {
+    private void exportFile() {
 
     }
 
+    /**
+     * Functionality to import file menu item
+     */
     @FXML
-    void importFile(ActionEvent event) {
+    private void importFile() {
 
     }
 
